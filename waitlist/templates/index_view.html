@@ -1,0 +1,308 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Join the Waitlist {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Hero -->
+    <section class="section section-header pb-6 bg-secondary text-white overflow-hidden z-2">
+        <div class="container z-2">
+            <div class="row justify-content-center mb-2">
+                <div class="col-lg-8 col-xl-10">
+                    <div class="text-center">
+                        <h1 class="display-2 mb-4">Cloud-Based <span class="text-secondary-app fw-bold">Logistics Management Software</span>
+                            for Small to Medium Businesses.</h1>
+                        <p class="h2 fw-normal">Our powerful cloud-based software is designed to</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-lg bg-secondary">
+        <div class="container z-2 mt-sm-n6 mt-md-n7">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card bg-white border-gray-300 text-gray p-4">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <h2 class="h4 m-0">Streamline Logistics Operations</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Efficiently manage your entire logistics process from start to finish. Our LMS
+                                simplifies and automates crucial tasks, allowing you to focus on delivering exceptional
+                                service to your customers.
+                            </p>
+                            <a href="{% url 'waitlist:join_waitlist' %}" class="btn btn-danger animate-up-2 mt-3">Click
+                                Here to Join the Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card bg-white border-gray-300 text-gray p-4">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <h2 class="h4 m-0">Improve Efficiency</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Unlock new levels of efficiency within your logistics network. Our software leverages
+                                advanced algorithms and intelligent features to optimize routes, minimize transportation
+                                time, and maximize resource utilization.
+                            </p>
+                            <a href="{% url 'waitlist:join_waitlist' %}" class="btn btn-danger animate-up-2 mt-3">Click
+                                Here to Join the Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card bg-white border-gray-300 text-gray p-4">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <h2 class="h4 m-0">Reduce Costs</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Take control of your expenses and increase your profitability. Our LMS helps you
+                                identify cost-saving opportunities, minimize unnecessary expenditures, and optimize your
+                                overall logistics expenditure.
+                            </p>
+                            <a href="{% url 'waitlist:join_waitlist' %}" class="btn btn-danger animate-up-2 mt-3">Click
+                                Here to Join the Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card bg-white border-gray-300 text-gray p-4">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <h2 class="h4 m-0">Enhance Customer Satisfaction</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Delight your customers with seamless and reliable logistics experiences. Our software
+                                enables real-time tracking, ensuring transparency and proactive communication, resulting
+                                in happier customers and repeat business.
+                            </p>
+                            <a href="{% url 'waitlist:join_waitlist' %}" class="btn btn-danger animate-up-2 mt-3">Click
+                                Here to Join the Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section section-lg pt-5 pt-md-7 bg-primary-app">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">AI Powered Route Optimization</h2>
+                                <p class="card-text">
+                                    Say goodbye to inefficient routes! Our software utilizes
+                                    cutting-edge artificial intelligence algorithms to optimize your delivery routes,
+                                    saving you time and fuel costs.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/route.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">Real-time Tracking</h2>
+                                <p class="card-text">
+                                    Keep tabs on your shipments in real time. Our software offers live tracking
+                                    capabilities, allowing you to monitor the progress of your deliveries and ensure
+                                    timely arrivals.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/tracking.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-12 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h2 class="h4 m-0 mb-2 ">Efficient Inventory Management</h2>
+                                <p class="fw-bold">
+                                    Take control of your inventory with ease. Our software provides comprehensive tools
+                                    to track and manage your stock levels, ensuring you never run out of crucial items.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-4 text-md-right">
+                                <img src="{% static 'static/assets/img/inventory.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">Instant Real-time Reporting</h2>
+                                <p class="card-text">
+                                    Keep tabs on your shipments/deliveries in real time. Our
+                                    software offers live tracking capabilities, allowing you to monitor the progress of
+                                    your deliveries and ensure timely arrivals.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/reporting.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">Powerful Analytics</h2>
+                                <p class="card-text">
+                                    Uncover hidden patterns and optimize your operations. Our software provides robust
+                                    analytics tools, allowing you to extract valuable insights and drive efficiency
+                                    throughout your logistics network.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/analytics.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">Seamless Accounting & Remittances</h2>
+                                <p class="card-text">
+                                    Simplify your financial processes. Our software integrates seamlessly with your
+                                    accounting systems, making it effortless to manage invoices, payments, and
+                                    remittances.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/accounting.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                <div class="card shadow bg-secondary border-gray-300 text-white p-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="h4 m-0 mb-2 ">Comprehensive Insurance Cover</h2>
+                                <p class="card-text">
+                                    Protect your goods and mitigate risks. Our software offers insurance coverage
+                                    options, giving you peace of mind during transportation and storage.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <img src="{% static 'static/assets/img/insurance.svg' %}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="section section-md bg-secondary text-white">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12 text-center mb-4">
+                    <div class="card shadow">
+                        <div class="card-body px-5 py-5">
+                            <p class="h3 fw-normal lh-160 text-center text-secondary">Join our waitlist today and be at
+                                the forefront of logistics
+                                management innovation. Experience the power of our cloud-based solution tailored
+                                specifically
+                                for small to medium businesses. Sign up now to revolutionize your logistics operations
+                                and gain
+                                a competitive edge in the market..</p>
+                            <a href="{% url 'waitlist:join_waitlist' %}" class="btn btn-danger animate-up-2 mt-3">Click
+                                Here to Join the Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-instagram h3 px-4" aria-label="instagram social link" href="#"><span
+                                class="fab fa-instagram"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-facebook  h3 px-4" aria-label="facebook social link" href="#"><span
+                                class="fab fa-facebook"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-github h3 px-4" aria-label="github social link" href="#"><span
+                                class="fab fa-github"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dribbble h3 px-4" aria-label="dribbble social link" href="#"><span
+                                class="fab fa-dribbble"></span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

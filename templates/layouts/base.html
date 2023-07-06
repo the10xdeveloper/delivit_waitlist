@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- Primary Meta Tags -->
+
+    <title>
+        {% block title %}{% endblock %} | Delivit
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% include 'includes/style.html' %}
+    {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body>
+
+<header class="header-global">
+    <nav id="navbar-main"
+         aria-label="Primary navigation"
+         class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom {% block nav_style %} navbar-dark {% endblock nav_style %}">
+
+        {% include 'includes/navigation.html' %}
+
+    </nav>
+</header>
+
+<main>
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+</main>
+
+{% include 'includes/footer.html' %}
+
+{% include 'includes/scripts.html' %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>
