@@ -1,25 +1,20 @@
 import os
+import sys
 from pathlib import Path
 
-import environ
-
-env = environ.Env(
-    DEBUG=(bool, False),
-)
+import dj_database_url
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(BASE_DIR / '.env')
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
-SECRET_KEY = env('SECRET_KEY')
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-DEBUG = env('DEBUG')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-# settings.py
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
-
-CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # Application definition
 
@@ -68,9 +63,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'delivit_waitlist.wsgi.application'
 
 # Database
-DATABASES = {
-    'default': env.db()
-}
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -106,15 +111,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media/"
-
 STATICFILES_DIRS = (
     BASE_DIR, 'static',
 )
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
