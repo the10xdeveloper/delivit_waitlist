@@ -12,14 +12,12 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-
 ENV_ALLOWED_HOST = os.getenv('DJANGO_ALLOWED_HOST') or None
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 if not DEBUG:
     ALLOWED_HOSTS += [os.getenv('DJANGO_ALLOWED_HOST')]
-
 
 # ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
 #                           "delivit.io, www.delivit.io, '.ondigitalocean.app',127.0.0.1,localhost").split(",")
