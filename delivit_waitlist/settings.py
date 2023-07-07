@@ -12,8 +12,17 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
-                          "delivit.io, www.delivit.io, '.ondigitalocean.app',127.0.0.1,localhost").split(",")
+
+ENV_ALLOWED_HOST = os.getenv('DJANGO_ALLOWED_HOST') or None
+
+ALLOWED_HOSTS = []
+
+if not DEBUG:
+    ALLOWED_HOSTS += [os.getenv('DJANGO_ALLOWED_HOST')]
+
+
+# ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
+#                           "delivit.io, www.delivit.io, '.ondigitalocean.app',127.0.0.1,localhost").split(",")
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
@@ -64,18 +73,37 @@ TEMPLATES = [
 WSGI_APPLICATION = 'delivit_waitlist.wsgi.application'
 
 # Database
-if DEVELOPMENT_MODE is True:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+POSTGRES_DB = os.environ.get("POSTGRES_DB")  # database name
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")  # database user password
+POSTGRES_USER = os.environ.get("POSTGRES_USER")  # database username
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST")  # database host
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT")  # database port
+
+POSTGRES_READY = (
+        POSTGRES_DB is not None
+        and POSTGRES_PASSWORD is not None
+        and POSTGRES_USER is not None
+        and POSTGRES_HOST is not None
+        and POSTGRES_PORT is not None
+)
+
+if POSTGRES_READY:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
         }
-    }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
 
 # Password validation
